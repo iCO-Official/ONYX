@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ONYX - Player</title>
+  <meta name="theme-color" content="#080808">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="player">
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/home.html"><span class="brand__mark">O</span><span class="brand__word">ONYX Player</span></a>
+      <div class="topbar__actions">
+        <a class="button button--ghost button--small" href="/home.html">Назад</a>
+      </div>
+    </header>
+
+    <main class="page player-page">
+      <section class="panel player-screen" id="playerCompact">
+        <div class="player-screen__layout">
+          <button class="player-screen__cover cover-variant" id="playerCover" type="button" aria-label="Открыть арт-режим"></button>
+          <div>
+            <a id="playerTitleLink" class="player-title-link" href="#" role="button">Нет трека</a>
+            <p id="playerArtistLine">Неизвестный исполнитель</p>
+            <div class="timeline">
+              <div class="timeline__fill" id="playerTimelineFill"></div>
+            </div>
+            <div class="timeline__labels">
+              <span id="playerCurrentTime">00:00</span>
+              <span id="playerTotalTime">00:00</span>
+            </div>
+            <div class="transport">
+              <button class="icon-button" id="playerPrev" type="button">↶</button>
+              <button class="play-button" id="playerPlay" type="button">▶</button>
+              <button class="icon-button" id="playerNext" type="button">↷</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel player-screen" id="playerLyrics" hidden>
+        <div class="section-head">
+          <h3 id="lyricsTrackTitle">Текст песни</h3>
+          <button class="button button--ghost button--small" id="closeLyricsMode" type="button">Скрыть текст</button>
+        </div>
+        <div id="lyricsViewLines" class="lyrics-lines"></div>
+      </section>
+
+      <section class="player-screen player-art-mode" id="playerArt" hidden>
+        <button class="button button--ghost button--small player-art-mode__close" id="closeArtMode" type="button">Скрыть арт</button>
+        <div class="player-art-mode__layout">
+          <button class="player-art-mode__cover cover-variant" id="artCover" type="button"></button>
+          <div class="player-art-mode__content">
+            <h2 id="artMainLine">Нет текста</h2>
+            <p id="artNextLine"></p>
+            <p id="artNextLine2"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/web-bridge.js"></script>
+  <script src="/assets/providers.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

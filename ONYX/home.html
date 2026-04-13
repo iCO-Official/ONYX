@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ONYX - Плеер</title>
+  <meta name="theme-color" content="#080808">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="home">
+  <div class="app-shell app-shell--dashboard">
+    <aside class="sidebar panel">
+      <a class="brand brand--stack" href="/index.html"><span class="brand__mark">O</span><span class="brand__word">ONYX</span></a>
+      <nav class="sidebar__nav">
+        <a class="sidebar__link is-active" href="/home.html">Моя волна</a>
+        <a class="sidebar__link" href="/queue.html">Очередь</a>
+        <a class="sidebar__link" href="/profile.html">Профиль</a>
+        <a class="sidebar__link" href="/settings.html">Настройки</a>
+      </nav>
+      <div class="sidebar__foot">
+        <div class="status-dot"></div>
+        <span>Stone Sync • online</span>
+      </div>
+    </aside>
+
+    <main class="dashboard">
+      <header class="dashboard__top">
+        <div>
+          <div class="eyebrow">FROM COMMUNITY, FOR COMMUNITY</div>
+          <h1>Музыка без лишнего шума</h1>
+        </div>
+        <a class="avatar-chip" href="/profile.html">OE</a>
+      </header>
+
+      <section class="search-hero panel crystal-rise">
+        <div class="mobile-content-tabs" id="mobileContentTabs" hidden>
+          <button class="mobile-content-tabs__item is-active" type="button" data-mobile-tab="all">Все</button>
+          <button class="mobile-content-tabs__item" type="button" data-mobile-tab="music">Музыка</button>
+          <button class="mobile-content-tabs__item" type="button" data-mobile-tab="podcasts">Подкасты</button>
+          <button class="mobile-content-tabs__item" type="button" data-mobile-tab="books">Аудиокниги</button>
+        </div>
+        <div class="source-picker">
+          <button class="chip chip--toggle" data-source="all">All sources</button>
+          <button class="chip chip--toggle is-active" data-source="apple">Apple Previews</button>
+          <button class="chip chip--toggle" data-source="jamendo">Jamendo</button>
+          <button class="chip chip--toggle" data-source="soundcloud">SoundCloud</button>
+          <button class="chip chip--toggle" data-source="youtube">YouTube</button>
+          <button class="chip chip--toggle" data-source="library">My Library</button>
+        </div>
+        <label class="searchbar">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Найдите артиста, трек или релиз">
+        </label>
+        <label class="button button--ghost button--small button--file">
+          Добавить свой трек
+          <input id="localTrackInput" type="file" accept="audio/*" multiple>
+        </label>
+        <div id="searchDropdown" class="search-dropdown" hidden></div>
+        <p class="note">Поиск по нескольким каталогам сразу: Apple previews, Jamendo, SoundCloud (client_id), YouTube API и локальная библиотека ONYX.</p>
+      </section>
+
+      <section class="player-layout">
+        <article class="panel now-playing crystal-rise" id="nowPlayingPanel">
+          <div class="cover-art" id="coverArt"></div>
+          <div class="now-playing__meta">
+            <div class="eyebrow">NOW PLAYING</div>
+            <h2 id="trackTitle">Нет трека</h2>
+            <p id="trackArtist">Выберите трек из демо-каталога или поиска.</p>
+            <div class="timeline">
+              <div class="timeline__fill" id="timelineFill"></div>
+            </div>
+            <div class="timeline__labels">
+              <span id="currentTime">00:00</span>
+              <span id="totalTime">00:00</span>
+            </div>
+            <div class="transport">
+              <button class="icon-button" id="prevTrack" type="button">↶</button>
+              <button class="play-button" id="playToggle" type="button">▶</button>
+              <button class="icon-button" id="nextTrack" type="button">↷</button>
+              <button class="icon-button" id="likeTrack" type="button">♡</button>
+              <button class="icon-button" id="enqueueTrack" type="button">＋</button>
+              <button class="icon-button" id="openExpandedPlayer" type="button">⤢</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel stats-panel crystal-rise">
+          <div class="stat-grid">
+            <div class="stat-card"><span>Прослушивания</span><strong id="statPlays">0</strong></div>
+            <div class="stat-card"><span>Артисты</span><strong id="statArtists">0</strong></div>
+            <div class="stat-card"><span>Время в плеере</span><strong id="statMinutes">0 мин</strong></div>
+          </div>
+          <div class="history-toggle">
+            <div>
+              <strong>Сохранять историю</strong>
+              <p>Нужна для Моей волны и статистики профиля.</p>
+            </div>
+            <button class="switch" id="historySwitch" type="button" aria-pressed="true"><span></span></button>
+          </div>
+          <div class="empty-state" id="historyState">
+            Вы ещё ничего не слушали. Найдите трек через поиск или выберите демо-релиз ниже.
+          </div>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel crystal-rise">
+          <div class="section-head">
+            <h3>Моя волна / История</h3>
+            <a href="/queue.html">Открыть очередь</a>
+          </div>
+          <div id="historyList" class="list-stack"></div>
+        </article>
+        <article class="panel crystal-rise">
+          <div class="section-head">
+            <h3>Топ артистов</h3>
+            <span class="mono">2 × 3</span>
+          </div>
+          <div id="topArtists" class="artist-grid"></div>
+        </article>
+      </section>
+
+      <section class="panel crystal-rise">
+        <div class="section-head">
+          <h3>Результаты поиска и каталог</h3>
+          <span class="mono">OFFICIAL / LOCAL</span>
+        </div>
+        <div id="catalogGrid" class="track-grid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="mini-player panel">
+    <div class="mini-player__track">
+      <div class="mini-player__cover cover-variant cover-variant--rounded" id="miniCover"></div>
+      <div class="mini-player__meta">
+        <a id="miniTitleLink" class="track-title-link" href="/player.html"><strong id="miniTitle">Нет трека</strong></a>
+        <p id="miniArtist">Очередь пуста</p>
+      </div>
+    </div>
+    <div class="mini-player__transport">
+      <button class="icon-button" id="miniPrev" type="button">↶</button>
+      <button class="play-button play-button--small" id="miniPlay" type="button">▶</button>
+      <button class="icon-button" id="miniNext" type="button">↷</button>
+    </div>
+    <div class="mini-player__progress">
+      <div class="timeline timeline--mini">
+        <div class="timeline__fill" id="miniTimelineFill"></div>
+      </div>
+      <div class="timeline__labels timeline__labels--mini">
+        <span id="miniCurrentTime">00:00</span>
+        <span id="miniTotalTime">00:00</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="expanded-player" id="expandedPlayer" hidden>
+    <div class="expanded-player__backdrop"></div>
+    <div class="expanded-player__card">
+      <button class="icon-button expanded-player__close" id="closeExpandedPlayer" type="button">✕</button>
+      <div class="expanded-player__layout">
+        <div class="expanded-player__left">
+          <div class="expanded-player__cover" id="overlayCover"></div>
+          <h2 id="overlayTrackTitle">Нет трека</h2>
+          <p id="overlayTrackArtist">Неизвестный исполнитель</p>
+          <div class="timeline">
+            <div class="timeline__fill" id="overlayTimelineFill"></div>
+          </div>
+          <div class="timeline__labels">
+            <span id="overlayCurrentTime">00:00</span>
+            <span id="overlayTotalTime">00:00</span>
+          </div>
+          <div class="transport">
+            <button class="icon-button" id="overlayPrev" type="button">↶</button>
+            <button class="play-button" id="overlayPlay" type="button">▶</button>
+            <button class="icon-button" id="overlayNext" type="button">↷</button>
+          </div>
+        </div>
+        <div class="expanded-player__right">
+          <div class="section-head">
+            <h3>Текст песни</h3>
+            <span class="mono">AUTO</span>
+          </div>
+          <pre id="overlayLyrics" class="expanded-player__lyrics">Для этого трека текст не найден.</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="crystal-cursor" aria-hidden="true"></div>
+
+  <script src="/web-bridge.js"></script>
+  <script src="/assets/providers.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

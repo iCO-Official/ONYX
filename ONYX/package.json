@@ -1,0 +1,9 @@
+{
+  "name": "onyx-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ONYX PWA prototype",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

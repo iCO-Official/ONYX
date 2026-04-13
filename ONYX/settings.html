@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ONYX - Настройки</title>
+  <meta name="theme-color" content="#080808">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="settings">
+  <div class="app-shell app-shell--dashboard">
+    <aside class="sidebar panel">
+      <a class="brand brand--stack" href="/index.html"><span class="brand__mark">O</span><span class="brand__word">ONYX</span></a>
+      <nav class="sidebar__nav">
+        <a class="sidebar__link" href="/home.html">Моя волна</a>
+        <a class="sidebar__link" href="/queue.html">Очередь</a>
+        <a class="sidebar__link" href="/profile.html">Профиль</a>
+        <a class="sidebar__link is-active" href="/settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="dashboard">
+      <header class="dashboard__top">
+        <div>
+          <div class="eyebrow">SETTINGS / INTERFACE CORE</div>
+          <h1>Настройки</h1>
+        </div>
+        <a class="button button--ghost" href="/home.html">Открыть плеер</a>
+      </header>
+
+      <section class="settings-shell">
+        <nav class="settings-nav panel">
+          <button class="settings-tab is-active" data-tab="playback" type="button">Воспроизведение</button>
+          <button class="settings-tab" data-tab="hotkeys" type="button">Хоткеи</button>
+          <button class="settings-tab" data-tab="optimization" type="button">Оптимизация</button>
+          <button class="settings-tab" data-tab="services" type="button">Сервисы / API</button>
+          <button class="settings-tab" data-tab="experimental" type="button">Экспериментальные</button>
+          <button class="settings-tab" data-tab="interface" type="button">Интерфейс</button>
+        </nav>
+
+        <div class="settings-content">
+          <section class="settings-pane panel is-active" data-pane="playback">
+            <div class="section-head">
+              <h3>Качество звука</h3>
+              <span class="mono">PLAYBACK</span>
+            </div>
+            <div class="segmented" id="qualitySegment">
+              <button class="is-active" data-quality="balanced" type="button">Сбалансировано</button>
+              <button data-quality="maximum" type="button">Максимум</button>
+            </div>
+            <div class="field-card">
+              <label><span>Профили по сервисам</span><input type="text" value="Наследовать от общего профиля" readonly></label>
+            </div>
+          </section>
+
+          <section class="settings-pane panel" data-pane="hotkeys">
+            <div class="section-head">
+              <h3>Глобальные горячие клавиши</h3>
+              <button class="button button--ghost button--small" id="resetHotkeys" type="button">Сбросить</button>
+            </div>
+            <div class="hotkey-list">
+              <div><span>Пуск / пауза</span><strong>Insert</strong></div>
+              <div><span>Следующий</span><strong>Ctrl + →</strong></div>
+              <div><span>Предыдущий</span><strong>Ctrl + ←</strong></div>
+              <div><span>Громче</span><strong>Ctrl + ↑</strong></div>
+              <div><span>Тише</span><strong>Ctrl + ↓</strong></div>
+              <div><span>Без звука</span><strong>Ctrl + M</strong></div>
+            </div>
+          </section>
+
+          <section class="settings-pane panel" data-pane="optimization">
+            <div class="section-head">
+              <h3>Оптимизация</h3>
+              <span class="mono">LOW POWER</span>
+            </div>
+            <div class="toggle-list">
+              <button class="toggle-row" data-toggle="reduceMotion" type="button"><span>Отключить анимации</span><strong>Ускоряет интерфейс</strong></button>
+              <button class="toggle-row" data-toggle="simpleGraphics" type="button"><span>Упрощённая графика</span><strong>Снижает blur и glow</strong></button>
+              <button class="toggle-row" data-toggle="freezeBackground" type="button"><span>Заморозка интерфейса в фоне</span><strong>Для свёрнутого окна</strong></button>
+              <button class="toggle-row" data-toggle="disableVideo" type="button"><span>Отключать видео-фоны</span><strong>Экономит ресурсы</strong></button>
+            </div>
+          </section>
+
+          <section class="settings-pane panel" data-pane="services">
+            <div class="section-head">
+              <h3>Сервисы / API</h3>
+              <span class="mono">USER CONTROLLED</span>
+            </div>
+            <div class="field-grid">
+              <label><span>Jamendo Client ID</span><input id="serviceToken" type="text" placeholder="Введите официальный client_id"></label>
+              <label><span>SoundCloud Client ID</span><input id="soundCloudClientId" type="text" placeholder="По умолчанию встроенный, можно заменить своим"></label>
+              <label><span>YouTube Data API Key</span><input id="youtubeApiKey" type="text" placeholder="AIza..."></label>
+              <label>
+                <span>Режим поиска</span>
+                <select id="searchMode">
+                  <option value="direct">direct</option>
+                  <option value="proxy">proxy</option>
+                  <option value="fallback">fallback</option>
+                </select>
+              </label>
+              <label><span>Giphy API Key</span><input id="giphyKey" type="text" placeholder="Для реакций и анимаций"></label>
+            </div>
+            <button class="button button--ghost button--small" id="apiHelp" type="button">Как получить ключ</button>
+          </section>
+
+          <section class="settings-pane panel" data-pane="experimental">
+            <div class="section-head">
+              <h3>Экспериментальные</h3>
+              <span class="mono">LAB</span>
+            </div>
+            <div class="toggle-list">
+              <button class="toggle-row" data-toggle="retroWidgets" type="button"><span>Ретро-виджеты</span><strong>Калькулятор, кликер, сапёр</strong></button>
+              <button class="toggle-row" data-toggle="adhdMode" type="button"><span>Режим ADHD</span><strong>Случайные отвлекающие окна</strong></button>
+              <button class="toggle-row" data-toggle="floatingMedia" type="button"><span>Медиа-браузер</span><strong>Плавающие окна</strong></button>
+              <button class="toggle-row" data-toggle="stoneClick" type="button"><span>Звуковой брендинг</span><strong>Глубокий stone click</strong></button>
+            </div>
+          </section>
+
+          <section class="settings-pane panel" data-pane="interface">
+            <div class="section-head">
+              <h3>Темы ONYX</h3>
+              <span class="mono">LIVE PREVIEW</span>
+            </div>
+            <div class="theme-grid" id="themeGrid"></div>
+            <div class="field-grid">
+              <label>
+                <span>Форма обложки в плеере</span>
+                <select id="coverStyle">
+                  <option value="rounded">Скруглённая</option>
+                  <option value="square">Квадрат</option>
+                  <option value="disc">Пластинка (круг)</option>
+                </select>
+              </label>
+              <button class="toggle-row" data-toggle="rotateCover" type="button"><span>Вращать обложку при воспроизведении</span><strong>Player motion</strong></button>
+            </div>
+            <div class="custom-theme">
+              <label><span>Фон</span><input id="customBackground" type="color" value="#080808"></label>
+              <label><span>Акцент</span><input id="customAccent" type="color" value="#9b87f5"></label>
+              <label><span>Прожилки</span><input id="veinIntensity" type="range" min="0" max="100" value="42"></label>
+              <label><span>Скругление</span><input id="radiusControl" type="range" min="14" max="32" value="24"></label>
+            </div>
+            <div class="theme-actions">
+              <button class="button" id="saveCustomTheme" type="button">Сохранить свою тему</button>
+              <button class="button button--ghost" id="exportTheme" type="button">Экспорт .onyxtheme</button>
+              <label class="button button--ghost button--file">Импорт темы<input id="importTheme" type="file" accept=".onyxtheme,application/json"></label>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="modal" id="helpModal">
+    <div class="modal__card panel">
+      <div class="section-head">
+        <h3>Как получить ключ</h3>
+        <button class="icon-button" id="closeModal" type="button">✕</button>
+      </div>
+      <p>Apple previews работают без ключа. Для SoundCloud есть встроенный client_id по умолчанию, но вы можете указать свой в любое время. Для Jamendo нужен client_id, для YouTube используйте YouTube Data API key. ONYX показывает результаты поиска и внешние ссылки, но не реализует обход защиты или нелицензионный доступ к потокам.</p>
+    </div>
+  </dialog>
+
+  <div class="crystal-cursor" aria-hidden="true"></div>
+
+  <script src="/web-bridge.js"></script>
+  <script src="/assets/providers.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

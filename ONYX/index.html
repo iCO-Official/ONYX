@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>ONYX - Music with the soul of stone</title>
+  <meta name="description" content="ONYX — тёмная музыкальная платформа с эстетикой оникса, PWA-оболочкой и единым интерфейсом для браузера, iPhone и ПК.">
+  <meta name="theme-color" content="#080808">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body data-page="landing">
+  <div class="app-shell">
+    <header class="topbar topbar--landing">
+      <a class="brand" href="/index.html" aria-label="ONYX home">
+        <span class="brand__mark">O</span>
+        <span class="brand__word">ONYX</span>
+      </a>
+      <nav class="nav">
+        <a href="#platform">Платформа</a>
+        <a href="#community">Сообщество</a>
+        <a href="#api">API</a>
+        <a href="#download">Скачать</a>
+      </nav>
+      <div class="topbar__actions">
+        <div class="status-pill">Telegram • Windows • Linux</div>
+        <a class="button button--ghost" href="/login.html">Войти</a>
+        <a class="button" href="/register.html">Регистрация</a>
+      </div>
+    </header>
+
+    <main class="page page--landing">
+      <section class="hero panel crystal-rise">
+        <div class="hero__content">
+          <div class="eyebrow">FROM COMMUNITY, FOR COMMUNITY</div>
+          <h1>Музыка с характером<br>камня.</h1>
+          <p>
+            ONYX — тёмная PWA-платформа с эстетикой оникса, сделанная как единый опыт для браузера,
+            iPhone и ПК. Прототип рассчитан на легальные интеграции, пользовательскую медиатеку
+            и аккуратный рост рядом с сообществом.
+          </p>
+          <div class="hero__actions">
+            <a class="button" href="#download">Скачать для Windows</a>
+            <a class="button button--ghost" href="/home.html">Открыть в браузере</a>
+          </div>
+        </div>
+        <div class="hero__visual">
+          <div class="stone-window">
+            <div class="stone-window__bar">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="stone-window__body">
+              <div class="player-card">
+                <div class="cover-art cover-art--large"></div>
+                <div class="player-card__meta">
+                  <div class="mono overline">ONYX / DESKTOP</div>
+                  <h2>Чистый ритм.<br>Глубокий слой.</h2>
+                  <p>Главный экран, очередь, темы и профиль собираются в одну каменную оболочку.</p>
+                  <div class="playline">
+                    <div class="playline__crack"></div>
+                    <div class="playline__knob"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="mini-chips">
+                <span>Queue</span>
+                <span>Themes</span>
+                <span>PWA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="platform" class="section">
+        <div class="section-heading">
+          <div class="eyebrow">PHILOSOPHY</div>
+          <h2>Что для нас важно</h2>
+        </div>
+        <div class="grid grid--2">
+          <article class="panel feature-card crystal-rise">
+            <span class="chip">FOCUS</span>
+            <h3>Без лишних слоёв.</h3>
+            <p>Только то, что помогает понять ONYX сейчас: музыка, очередь, профиль, темы и живые системные настройки.</p>
+          </article>
+          <article class="panel feature-card crystal-rise">
+            <span class="chip">DESKTOP</span>
+            <h3>Windows и Linux.</h3>
+            <p>Интерфейс адаптирован под широкие рабочие окна, но остаётся удобным и на iPhone как установленное PWA.</p>
+          </article>
+          <article class="panel feature-card crystal-rise">
+            <span class="chip">CORE</span>
+            <h3>Закрытое ядро - открытая экосистема.</h3>
+            <p>Демо-версия готова к легальным провайдерам, пользовательским ключам API и локальной медиатеке без серых обходов.</p>
+          </article>
+          <article class="panel feature-card crystal-rise">
+            <span class="chip">COMMUNITY</span>
+            <h3>From community, for community.</h3>
+            <p>Продукт выглядит как редкий предмет, но говорит честно: что уже есть, что планируется и где сообщество влияет на рост.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="community" class="section">
+        <div class="section-heading">
+          <div class="eyebrow">COMMUNITY SIGNAL</div>
+          <h2>Отзывы сообщества</h2>
+        </div>
+        <div class="grid grid--4 reviews">
+          <article class="panel review-card"><strong>"Наконец-то плеер, который не притворяется витриной"</strong><span>aurora.wav</span></article>
+          <article class="panel review-card"><strong>"Ощущается монолитным, как кусок полированного камня"</strong><span>riva.ctrl</span></article>
+          <article class="panel review-card"><strong>"Фокус на реальных сценариях, а не на лишних вкладках"</strong><span>modal.m</span></article>
+          <article class="panel review-card"><strong>"Telegram как единая точка контакта тут правда работает"</strong><span>drumline.k</span></article>
+        </div>
+      </section>
+
+      <section id="api" class="section">
+        <div class="cta panel crystal-rise">
+          <div>
+            <div class="eyebrow">API / SERVICES</div>
+            <h2>Интеграции под контролем пользователя</h2>
+            <p>ONYX рассчитан на подключение легальных сервисов, собственных ключей, локальных файлов и демо-каталога без скрытой магии.</p>
+          </div>
+          <div class="cta__chips">
+            <span>Own API Keys</span>
+            <span>IndexedDB</span>
+            <span>Service Worker</span>
+            <span>Web Audio API</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="download" class="section">
+        <div class="section-heading">
+          <div class="eyebrow">GET ONYX</div>
+          <h2>Windows, Linux и Telegram</h2>
+        </div>
+        <div class="grid grid--3">
+          <article class="panel download-card crystal-rise">
+            <div class="download-card__icon">◻</div>
+            <h3>Windows</h3>
+            <p>Win 10 & 11. Electron/Tauri-оболочка, трей, горячие клавиши и офлайн-кэш.</p>
+            <a class="button" href="/home.html">Открыть демо</a>
+          </article>
+          <article class="panel download-card crystal-rise">
+            <div class="download-card__icon">△</div>
+            <h3>Linux</h3>
+            <p>Подготовлено под `.deb` и `.tar.gz`, с той же визуальной системой и настройками.</p>
+            <a class="button button--ghost" href="/settings.html">Смотреть настройки</a>
+          </article>
+          <article class="panel download-card crystal-rise">
+            <div class="download-card__icon">✦</div>
+            <h3>Telegram</h3>
+            <p>Основной канал связи, обновлений и обратной связи от сообщества.</p>
+            <a class="button button--ghost" href="/profile.html">Открыть профиль</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>ONYX</strong> — музыка с характером камня
+      </div>
+      <div class="footer__links">
+        <a href="#platform">Платформа</a>
+        <a href="#community">Сообщество</a>
+        <a href="#api">API</a>
+        <a href="#download">Скачать</a>
+        <a href="/home.html">GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="crystal-cursor" aria-hidden="true"></div>
+
+  <script src="/web-bridge.js"></script>
+  <script src="/assets/providers.js"></script>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

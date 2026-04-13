@@ -1,0 +1,19 @@
+{
+  "name": "ONYX",
+  "short_name": "ONYX",
+  "description": "Stone-inspired music platform prototype for browser, iPhone, and desktop.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
